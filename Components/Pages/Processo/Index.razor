@@ -1,19 +1,25 @@
-﻿@page "/processos"
+@page "/processos"
 @using AppWebLeticia.Model
 @using AppWebLeticia.DAO
 @inject ProcessoDAO ProcessoDAO
 
-<PageTitle> Processos - Sistema de Controle de Processos</PageTitle>
+<PageTitle>Processos - Sistema de Controle de Processos</PageTitle>
 
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
-        <h2>Consulta de Processos</h2>
+        <h2 class="fw-bold mb-1">Consulta de Processos</h2>
+    </div>
+
+    <div>
+        <a href="/processos/cadastro" class="btn btn-primary">
+            <i class="bi bi-plus-lg"></i> Novo Processo
+        </a>
     </div>
 </div>
+
 <div class="custom-table-card">
     <div class="table-responsive">
-       
-        <table class="table align-midle">
+        <table class="table align-middle">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -28,26 +34,24 @@
                 @foreach (var processo in processos)
                 {
                     <tr>
-                        <td>1 </td>
-                        <td>RO - 12354 </td>
-                        <td>João Teixeira</td>
-                        <td>Solicitação de Ligação de Água </td>
-                        <td>Aberto</td>
-                        <td> </td>
+                        <td>@processo.Id</td>
+                        <td>@processo.Numero</td>
+                        <td>@processo.Interessado</td>
+                        <td>@processo.Assunto</td>
+                        <td>@processo.Situacao</td>
+                        <td></td>
                     </tr>
                 }
-                
             </tbody>
         </table>
-
     </div>
-
 </div>
+
 @code {
     private List<Processo> processos = new();
 
     protected override void OnInitialized()
     {
-        base.OnInitialized();
+        processos = ProcessoDAO.Listar();
     }
 }
