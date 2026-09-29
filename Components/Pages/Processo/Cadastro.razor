@@ -1,6 +1,8 @@
 @page "/processos/cadastro"
+@using AppWebLeticia.DAO
+@using AppWebLeticia.Model
 @rendermode InteractiveServer
-@inject ProcessoDAO dao
+@inject AppWebLeticia.DAO.ProcessoDAO dao
 @inject NavigationManager NavigationManager
 
 <PageTitle>Novo Processo - Sistema de Controle de Processos</PageTitle>
@@ -89,7 +91,7 @@
 </div>
 
 @code {
-    private Processo processo = new();
+    private AppWebLeticia.Model.Processo processo = new();
 
     private void Salvar()
     {

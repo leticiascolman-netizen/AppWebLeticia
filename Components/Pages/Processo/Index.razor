@@ -1,7 +1,7 @@
 @page "/processos"
 @using AppWebLeticia.Model
 @using AppWebLeticia.DAO
-@inject ProcessoDAO ProcessoDAO
+@inject AppWebLeticia.DAO.ProcessoDAO ProcessoDAO
 
 <PageTitle>Processos - Sistema de Controle de Processos</PageTitle>
 
@@ -48,7 +48,7 @@
 </div>
 
 @code {
-    private List<Processo> processos = new();
+    private List<AppWebLeticia.Model.Processo> processos = new();
 
     protected override void OnInitialized()
     {
