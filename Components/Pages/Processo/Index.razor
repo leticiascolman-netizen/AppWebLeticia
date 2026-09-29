@@ -1,4 +1,7 @@
 ﻿@page "/processos"
+@using AppWebLeticia.Model
+@using AppWebLeticia.DAO
+@inject ProcessoDAO ProcessoDAO
 
 <PageTitle> Processos - Sistema de Controle de Processos</PageTitle>
 
@@ -22,14 +25,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1 </td>
-                    <td>RO - 12354 </td>
-                    <td>João Teixeira</td>
-                    <td>Solicitação de Ligação de Água </td>
-                    <td>Aberto</td>
-                    <td> </td>
-                </tr>
+                @foreach (var processo in processos)
+                {
+                    <tr>
+                        <td>1 </td>
+                        <td>RO - 12354 </td>
+                        <td>João Teixeira</td>
+                        <td>Solicitação de Ligação de Água </td>
+                        <td>Aberto</td>
+                        <td> </td>
+                    </tr>
+                }
+                
             </tbody>
         </table>
 
@@ -37,5 +44,10 @@
 
 </div>
 @code {
+    private List<Processo> processos = new();
 
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
 }
